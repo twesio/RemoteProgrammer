@@ -6,7 +6,7 @@ The executable is stored in the Release/ folder. Compiled for Windows 7, 64bit.
 
 Screenshots
 -----------
-![RemoteProgrammer](raw/master/screenshots/1.png "RemoteProgrammer")
+![RemoteProgrammer](RemoteProgrammer/raw/master/screenshots/1.png "RemoteProgrammer")
 
 Usage
 -----
