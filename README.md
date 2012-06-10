@@ -2,7 +2,7 @@
 ================
 
 An application to program Microchip PIC microcontrollers using the ICD3 programmer over the network.  
-The executable is stored in the Release/ folder. Compiled for Windows 7, 64bit.
+The executable is stored in the Release/ folder. Compiled for Windows 7, 32bit.
 
 Screenshots
 -----------
@@ -131,6 +131,17 @@ Follow these steps to fix the "Unresolved inclusion" warnings and get auto-compl
 * Click **Apply**
  * If dialog opens where you get asked whether you wish to rebuld the index, choose **Yes**
 * Click **OK**
+
+#### Stripping debug overhead from executables
+* Open Project properties
+* Select **C/C++ Build - Settings**
+* Select the **Build Steps** tab
+ * Select **Release** as Configuration
+ * Add `strip <File>.exe` as Post-build command
+* In case of RemoteProgrammer, this strips the executable down from 4,1MB to 2,5MB (64% smaller)
+
+#### Compile resource information into the program
+* See [src/res/README.md](RemoteProgrammer/raw/master/src/res/README.md)
 
 ## References
 * [wiki.wxwidgets.org](http://wiki.wxwidgets.org)
