@@ -30,7 +30,7 @@ Dependencies
 
 
 C++ Windows Development with Eclipse, MinGW and wxWidgets
-=========================================================
+---------------------------------------------------------
 
 The following "howto" describes the development setup which was used for building RemoteProgrammer.
 
@@ -131,6 +131,6 @@ Follow these steps to fix the "Unresolved inclusion" warnings and get auto-compl
 * [wiki.wxwidgets.org](http://wiki.wxwidgets.org)
 
 Disclaimer
-==========
+----------
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
