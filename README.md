@@ -95,6 +95,7 @@ The following "howto" describes the development setup which was used for buildin
 * Open **Project Properties** (Project - Properties)
 * Select and expand **C/C++ Build** in the list on the left
 * Choose **All configurations** as Configuration
+* Select **C/C++ Build - Settings**
 * Open the **Tool Settings** tab
 * Select **GCC C++ Compiler - Miscellaneous**
  * Run the command `wx-config --cxxflags --static` in a MinGW Shell
@@ -114,14 +115,18 @@ The following "howto" describes the development setup which was used for buildin
 Follow these steps to fix the "Unresolved inclusion" warnings and get auto-completion running
 * Open **Project Properties** (Project - Properties)
 * Expand **C/C++ General** in the list on the left
-* Select **Paths and Symbols**
+* Select **Indexer**
+ * Tick **Enable project specific settings**
+ * Tick **Index unused headers as C++ files**
+ * Click **Apply**
+* Select **Paths and Symbols** on the left
  * Choose **All configurations** as Configuration
  * In the **Includes** tab, select **GNU C++** as Language
  * Click **Add...** on the right
-  * Click **File system...* and select **C:\MinGW\include\wx-2.8**
+  * Click **File system...** and select **C:\MinGW\include\wx-2.8**
   * Click **OK**
  * Click **Add...** on the right
-  * Click **File system...* and select **C:\MinGW\lib\wx\include\msw-ansi-release-static-2.8**
+  * Click **File system...** and select **C:\MinGW\lib\wx\include\msw-ansi-release-static-2.8**
   * Click **OK**
 * Click **Apply**
  * If dialog opens where you get asked whether you wish to rebuld the index, choose **Yes**
