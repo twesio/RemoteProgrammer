@@ -105,7 +105,7 @@ The following "howto" describes the development setup which was used for buildin
 * Select **MinGW C++ Linker - Miscellaneous**
  * Run the command `wx-config --libs --static` in a MinGW Shell
  * Append the output to **Linker flags**
- * Prepend **-static-libstdc++ -static-libgcc** to **Linker flags**
+ * Prepend "**-static-libstdc++ -static-libgcc**" to **Linker flags**
  * The **Linker flags** now should look like `-static-libstdc++ -static-libgcc -L/mingw/lib  -mthreads  -Wl,--subsystem,windows -mwindows /mingw/lib/libwx_msw_richtext-2.8.a /mingw/lib/libwx_msw_aui-2.8.a /mingw/lib/libwx_msw_xrc-2.8.a /mingw/lib/libwx_msw_qa-2.8.a /mingw/lib/libwx_msw_html-2.8.a /mingw/lib/libwx_msw_adv-2.8.a /mingw/lib/libwx_msw_core-2.8.a /mingw/lib/libwx_base_xml-2.8.a /mingw/lib/libwx_base_net-2.8.a /mingw/lib/libwx_base-2.8.a -lwxregex-2.8 -lwxexpat-2.8 -lwxtiff-2.8 -lwxjpeg-2.8 -lwxpng-2.8 -lwxzlib-2.8 -lrpcrt4 -loleaut32 -lole32 -luuid -lwinspool -lwinmm -lshell32 -lcomctl32 -lcomdlg32 -lctl3d32 -ladvapi32 -lwsock32 -lgdi32`
  * Click **Apply**
 * Click **OK**
