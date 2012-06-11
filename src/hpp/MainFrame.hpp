@@ -4,6 +4,7 @@
 #include <wx/socket.h>
 #include "Server.hpp"
 #include "Programmer.hpp"
+#include "Registry.hpp"
 
 class Server;
 
@@ -35,6 +36,7 @@ private:
 	wxTextCtrl *textCtrl;
 	Programmer* programmer;
 	Server* server;
+	Registry *registry;
 
 	static const wxString ABOUT_MESSAGE;
 	DECLARE_EVENT_TABLE()

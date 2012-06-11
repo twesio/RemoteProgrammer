@@ -1,7 +1,7 @@
 #include "hpp/Server.hpp"
 #include <wx/file.h>
 
-Server::Server(MainFrame& mainFrame, Programmer& programmer): mainFrame(&mainFrame), programmer(&programmer) {
+Server::Server(MainFrame& mainFrame, Programmer& programmer): mainFrame(&mainFrame), programmer(&programmer), registry() {
 	this->setStarted(false);
 	this->setBusy(false);
 }
@@ -19,10 +19,10 @@ void Server::start() {
 	this->addToLog(_("Starting server.."));
 
 	// Try to find the ICD3CMD executable
-	if(wxFile::Exists(programmer->getIcd3cmdPath())) {
+	if(wxFile::Exists(this->registry->getIcdCmdPath())) {
 		this->addToLog(_("Found ICD3CMD"));
 	} else {
-		this->addToLog(wxString::Format(_("Unable to find ICD3CMD (%s)"), programmer->getIcd3cmdPath().c_str()));
+		this->addToLog(wxString::Format(_("Unable to find ICD3CMD (%s)"), this->registry->getIcdCmdPath().c_str()));
 		this->addToLog(_("Select [File -> Select ICD3CMD] from the menu to configure the path"));
 
 		return;

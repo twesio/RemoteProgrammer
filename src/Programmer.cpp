@@ -1,44 +1,15 @@
 #include "hpp/Programmer.hpp"
-#include <wx/msw/registry.h>
 #include <wx/file.h>
 #include <wx/filename.h>
 #include <wx/process.h>
 
-const wxString Programmer::ICD3CMD_PATH_DEFAULT("C:\\Program Files (x86)\\Microchip\\MPLAB IDE\\Programmer Utilities\\ICD3\\ICD3CMD.EXE");
-const wxString Programmer::ICD3CMD_REG_KEY("Software\\RemoteProgrammer");
-const wxString Programmer::ICD3CMD_REG_SUBKEY_NAME("ICD3CMD_PATH");
-
 Programmer::Programmer(MainFrame& mainFrame): mainFrame(&mainFrame) {
+	this->registry = new Registry();
 	this->hex = new wxString();
-
-	// Initialize path to ICD3CMD in registry
-	wxRegKey rpKey(wxRegKey::HKLM, Programmer::ICD3CMD_REG_KEY);
-	if(!rpKey.Exists()) {
-		rpKey.Create(false);
-	}
-	if(!rpKey.HasValue(Programmer::ICD3CMD_REG_SUBKEY_NAME)) {
-		rpKey.SetValue(Programmer::ICD3CMD_REG_SUBKEY_NAME, Programmer::ICD3CMD_PATH_DEFAULT);
-	}
 }
 
 Programmer::~Programmer() {
 
-}
-
-wxString Programmer::getIcd3cmdPath() {
-	wxRegKey rpKey(wxRegKey::HKLM, Programmer::ICD3CMD_REG_KEY);
-	wxString path("");
-	rpKey.QueryValue(Programmer::ICD3CMD_REG_SUBKEY_NAME, path);
-
-	return path;
-}
-
-void Programmer::setIcd3cmdPath(const wxString& path) {
-	wxRegKey rpKey(wxRegKey::HKLM, Programmer::ICD3CMD_REG_KEY);
-	rpKey.SetValue(Programmer::ICD3CMD_REG_SUBKEY_NAME, path);
-
-	this->mainFrame->addToLog(wxString::Format(_("ICD3CMD path changed to %s"), path.c_str()));
-	this->mainFrame->addToLog(_("Select [File -> Start server] from the menu to run the server"));
 }
 
 bool Programmer::program(wxSocketBase *sock) {
@@ -60,8 +31,11 @@ bool Programmer::program(wxSocketBase *sock) {
 	delete file;
 
 	// Flash hex into the device
-	wxString params = wxString::Format(_T("-P32MX795F512H -L -M -F\"%s\""), fileName.c_str());
-	wxString cmd = wxString::Format(_T("\"%s\" %s"), this->getIcd3cmdPath().c_str(), params.c_str());
+	wxString params = this->registry->getIcdCmdOptions();
+	params.Replace(Registry::ICD3CMD_OPTIONS_PLACEHOLDER_PATH, fileName, true);
+
+	wxString cmd = wxString::Format(_T("\"%s\" %s"), this->registry->getIcdCmdPath().c_str(), params.c_str());
+
 	this->mainFrame->addToLog(wxString::Format(_("Hex file has %d bytes"), this->hex->Length()));
 	this->mainFrame->addToLog(wxString::Format(_("Invoking %s"), cmd.c_str()));
 

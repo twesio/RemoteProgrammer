@@ -5,6 +5,7 @@
 MainFrame::MainFrame(const wxString& title) : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(1000, 300)) {
 	this->programmer = new Programmer(*this);
 	this->server = new Server(*this, *(this->programmer));
+	this->registry = new Registry();
 
 	// application icon
 	this->SetIcon(wxIcon(icon_xpm));
@@ -57,7 +58,10 @@ void MainFrame::addToLog(const wxString& msg) {
 void MainFrame::OnSelectPath(wxCommandEvent& WXUNUSED(event)) {
 	wxFileDialog* dialog = new wxFileDialog(this, "Select ICD3CMD.EXE ..", wxEmptyString, wxEmptyString, _("*.exe"));
 	if(dialog->ShowModal() == wxID_OK) {
-		this->programmer->setIcd3cmdPath(dialog->GetPath());
+		this->registry->setIcdCmdPath(dialog->GetPath());
+
+		this->addToLog(wxString::Format(_("ICD3CMD path changed to %s"), this->registry->getIcdCmdPath().c_str()));
+		this->addToLog(_("Select [File -> Start server] from the menu to run the server"));
 	}
 }
 

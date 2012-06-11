@@ -4,6 +4,7 @@
 #include <wx/socket.h>
 #include "MainFrame.hpp"
 #include "Programmer.hpp"
+#include "Registry.hpp"
 
 class MainFrame;
 class Programmer;
@@ -27,6 +28,7 @@ private:
 	bool _isBusy;
 	MainFrame* mainFrame;
 	Programmer* programmer;
+	Registry* registry;
 	wxSocketServer *socketServer;
 };
 
