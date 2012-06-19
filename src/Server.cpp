@@ -23,7 +23,7 @@ void Server::start() {
 		this->addToLog(_("Found ICD3CMD"));
 	} else {
 		this->addToLog(wxString::Format(_("Unable to find ICD3CMD (%s)"), this->registry->getIcdCmdPath().c_str()));
-		this->addToLog(_("Select [File -> Select ICD3CMD] from the menu to configure the path"));
+		this->addToLog(_("Select [Settings -> Change ICD3CMD Path] from the menu to configure the path"));
 
 		return;
 	}

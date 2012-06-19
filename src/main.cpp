@@ -3,9 +3,10 @@
 #include "hpp/MainFrame.hpp"
 
 BEGIN_EVENT_TABLE(MainFrame, wxFrame)
-	EVT_MENU(MainFrame::MENU_SELECT_PATH, MainFrame::OnSelectPath)
 	EVT_MENU(MainFrame::MENU_START, MainFrame::OnStart)
 	EVT_MENU(MainFrame::MENU_STOP, MainFrame::OnStop)
+	EVT_MENU(MainFrame::MENU_CHANGE_ICDCMD_PATH, MainFrame::OnChangeIcdCmdPath)
+	EVT_MENU(MainFrame::MENU_CHANGE_ICDCMD_OPTIONS, MainFrame::OnChangeIcdCmdOptions)
 	EVT_MENU(MainFrame::MENU_QUIT, MainFrame::OnQuit)
 	EVT_MENU(MainFrame::MENU_ABOUT, MainFrame::OnAbout)
 	EVT_SOCKET(MainFrame::SERVER_ID, MainFrame::OnServerEvent)

@@ -16,7 +16,6 @@ Start RemoteProgrammer and use netcat (or another socket client) to push a hex f
 
 Todo
 ----
-* To customize ICD3CMD options, search for **ICD3CMD_OPTIONS** in windows registry. A user interface will be added soon.
 * There is currently no way to customize the server port at runtime. You have to change it in the sources and recompile the programm.
 
 Dependencies

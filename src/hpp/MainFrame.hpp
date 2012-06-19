@@ -14,7 +14,8 @@ public:
 	~MainFrame();
 	void addToLog(const wxString& msg);
 
-	void OnSelectPath(wxCommandEvent& event);
+	void OnChangeIcdCmdPath(wxCommandEvent& event);
+	void OnChangeIcdCmdOptions(wxCommandEvent& event);
 	void OnStart(wxCommandEvent& event);
 	void OnStop(wxCommandEvent& event);
 	void OnQuit(wxCommandEvent& event);
@@ -23,9 +24,11 @@ public:
 	void OnSocketEvent(wxSocketEvent& event);
 
 	enum {
-		MENU_SELECT_PATH,
+		MENU_SELECT_PATH, //deprecated
 		MENU_START,
 		MENU_STOP,
+		MENU_CHANGE_ICDCMD_PATH,
+		MENU_CHANGE_ICDCMD_OPTIONS,
 		MENU_QUIT = wxID_EXIT,
 		MENU_ABOUT = wxID_ABOUT,
 
